@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-sqlalchemy = "^2.0.25"
+sqlalchemy-firebird = "^2.1"
 
 
 [build-system]
