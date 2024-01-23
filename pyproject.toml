@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.8"
 sqlalchemy-firebird = "^2.1"
+interbase = "^1.0.0"
+fdb = "^2.0.2"
 
 
 [build-system]
