@@ -1,11 +1,14 @@
-import sqlalchemy as db
+import fdb
 
+con = fdb.connect(
+    host='localhost',
+    database='C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB',
+    user='sysdba',
+    password='masterkey',
+    charset="UTF-8",
+    fb_library_name='C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll'
+)
 
-path='/C:/Users/Ev/Documents/Python/EnergyScrapper/ENERGY.GDB'
-db_uri='firebird+firebird://SYSDBA:masterkey@localhost:3050/ENERGY.GDB'
-engine=db.create_engine(db_uri, echo=True)
-
-connection = engine.connect()
-metadata = db.MetaData()
-impuls4 = db.Table(['impuls4'], metadata, autoload=True, autoload_with=engine)
-query = db.select([impuls4])
+cur = con.cursor()
+cur.execute("select * from impuls4")
+print(cur.fetchall())
