@@ -32,6 +32,8 @@ def get_counters_info():
                         all_counters_info.append(counters_info)
     return all_counters_info
 
-counters = get_counters_info()
-for num, char  in enumerate (counters, 1):
-    print(num, char)
+
+if __name__ == "__main__":
+    counters = get_counters_info()
+    for num, char  in enumerate (counters, 1):
+        print(num, char)
