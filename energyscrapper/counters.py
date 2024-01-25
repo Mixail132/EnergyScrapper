@@ -16,10 +16,12 @@ cursor = connect.cursor()
 
 request = ("SELECT NAME, SERIALNUM, NUM_DEVICE, NUM_CH FROM CHANNEL")
 
-
 cursor.execute(request)
 
 def get_counters_info():
+    """ Gets counters' info (number of a counter, what it counts) 
+        from the database, filters the extra data and makes a list
+        of the data. """
     all_counters_info=[]
     for i in  cursor.fetchall():
         counters_info=[]
