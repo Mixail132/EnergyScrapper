@@ -1,3 +1,5 @@
+# The script gets the energy consumption info
+
 import fdb
 from datetime import datetime, timedelta
 from counters import get_counters_info
@@ -21,6 +23,9 @@ consumptions = cursor.fetchall()
 
 
 def get_counters_consumption():
+    """ Gets energy consumption data from the database, 
+        looks for which the data belongs to which counter, 
+        makes a list of the summed up data. """
     all_couters_consumption=[]
     for counter in counters:
         for consumption in consumptions:
