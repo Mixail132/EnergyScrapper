@@ -26,7 +26,7 @@ def get_counters_info():
     for i in  cursor.fetchall():
         counters_info=[]
         for j in i:
-            counters_info.append(str(j)) 
+            counters_info.append((j)) 
         if not 'R-' in counters_info[0] :
             if not 'R+' in counters_info[0]:
                 if not 'А-' in counters_info[0]:

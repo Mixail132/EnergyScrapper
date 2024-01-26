@@ -30,8 +30,8 @@ def get_counters_consumption():
     for counter in counters:
         for consumption in consumptions:
             one_counter_consumption=[]
-            if int(counter[3]) == int(consumption[1]):
-                if int(counter[2]) == int(consumption[0]):
+            if counter[3] == consumption[1]:
+                if counter[2] == consumption[0]:
                     one_counter_consumption.append(counter[1])
                     total_consumption = round(consumption[3]+consumption[4]+consumption[5], 2)
                     one_counter_consumption.append(total_consumption)
