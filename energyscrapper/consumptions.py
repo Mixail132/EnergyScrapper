@@ -1,19 +1,9 @@
 # The script gets the energy consumption info
-
-import fdb
 from datetime import datetime, timedelta
 from counters import get_counters_info
+from connections import cursor
 
-connect = fdb.connect(
-    host='localhost',
-    database='C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB',
-    user='sysdba',
-    password='masterkey',
-    charset="UTF-8",
-    fb_library_name='C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll'
-)
 
-cursor = connect.cursor()
 yesterday = datetime.today()-timedelta(days=4)
 sql_date = yesterday.strftime("%Y-%m-%d") 
 request = (f"SELECT NUM_DEVICE, NUM_CH , DT_DAY,TARIF1, TARIF2, TARIF3 FROM IMPULS4 WHERE DT_DAY='{sql_date}'")

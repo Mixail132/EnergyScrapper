@@ -1,22 +1,10 @@
 # The script gets energy counters info
+from connections import cursor
 
-import fdb
-from datetime import datetime
-
-connect = fdb.connect(
-    host='localhost',
-    database='C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB',
-    user='sysdba',
-    password='masterkey',
-    charset="UTF-8",
-    fb_library_name='C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll'
-)
-
-cursor = connect.cursor()
 
 request = ("SELECT NAME, SERIALNUM, NUM_DEVICE, NUM_CH FROM CHANNEL")
-
 cursor.execute(request)
+
 
 def get_counters_info():
     """ Gets counters' info (number of a counter, what it counts) 
@@ -27,7 +15,7 @@ def get_counters_info():
         counters_info=[]
         for j in i:
             counters_info.append((j)) 
-        if not 'R-' in counters_info[0] :
+        if not 'R-' in counters_info[0]:
             if not 'R+' in counters_info[0]:
                 if not 'А-' in counters_info[0]:
                     if not 'A-' in counters_info[0]:
