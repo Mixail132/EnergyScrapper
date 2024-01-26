@@ -15,10 +15,10 @@ def get_counters_info():
         counters_info=[]
         for j in i:
             counters_info.append((j)) 
-        if not 'R-' in counters_info[0]:
-            if not 'R+' in counters_info[0]:
-                if not 'А-' in counters_info[0]:
-                    if not 'A-' in counters_info[0]:
+        if not 'R-' in str(counters_info[0]):
+            if not 'R+' in str(counters_info[0]):
+                if not 'А-' in str(counters_info[0]):
+                    if not 'A-' in str(counters_info[0]):
                         all_counters_info.append(counters_info)
     return all_counters_info
 
