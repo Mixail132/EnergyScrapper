@@ -1,5 +1,7 @@
 # The script gets energy counters info
+import re
 from connections import cursor
+
 
 
 request = ("SELECT NAME, SERIALNUM, NUM_DEVICE, NUM_CH FROM CHANNEL")
@@ -15,11 +17,9 @@ def get_counters_info():
         counters_info=[]
         for j in i:
             counters_info.append((j)) 
-        if not 'R-' in str(counters_info[0]):
-            if not 'R+' in str(counters_info[0]):
-                if not 'А-' in str(counters_info[0]):
-                    if not 'A-' in str(counters_info[0]):
-                        all_counters_info.append(counters_info)
+        reg=r"R\-|R\+|A\-|А\-"
+        if not re.findall(reg,counters_info[0]):
+            all_counters_info.append(counters_info)
     return all_counters_info
 
 
