@@ -12,7 +12,8 @@ The project works on poetry, it should get installed and initialized.\
 Python 32 bit should be installed.\
 Firebird driver fdb is needed.\
 The Firebird service called FirebirdServerDefaultInstance should be running on your computer.\
-You dont't need 'Energy Control Center' software running on your computer.
+You don't need 'Energy Control Center' software running on your computer.
+You even don't  need 'Energy Control Center' to be installed on your computer.
 
 ## Components
 Firebird 2.1.3\
