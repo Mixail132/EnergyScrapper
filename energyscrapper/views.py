@@ -1,47 +1,21 @@
-import fdb
-from datetime import datetime
+# Here willbe the main logic
 
-connect = fdb.connect(
-    host='localhost',
-    database='C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB',
-    user='sysdba',
-    password='masterkey',
-    charset="UTF-8",
-    fb_library_name='C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll'
-)
-
-cursor1 = connect.cursor()
-cursor2 = connect.cursor()
-
-request_1 = (
-"SELECT NAME, SERIALNUM, NUM_DEVICE, NUM_CH FROM CHANNEL "
-)
-request_2 = (
-"SELECT NUM_DEVICE, NUM_CH , DT_DAY,TARIF1, TARIF2, TARIF3 FROM IMPULS4 WHERE DT_DAY='2024-01-01' ORDER BY DT_DAY"
-)
-
-cursor1.execute(request_1)
-cursor2.execute(request_2)
-
-all_counters_info=[]
-for i in  cursor1.fetchall():
-    counters_info=[]
-    for j in i:
-        counters_info.append(str(j)) 
-    if not 'R-' in counters_info[0] :
-        if not 'R+' in counters_info[0]:
-            if not 'А-' in counters_info[0]:
-                if not 'A-' in counters_info[0]:
-                    all_counters_info.append(counters_info)
-for num, char  in enumerate (all_counters_info, 1):
-    print(num, char)
-    # all_counters_info.append(counters_info)
-        # counters_info.append((j[0],j[1],j[2],j[3]))
-    # day_energy_total=i[1]+i[2]+i[3]
-    # day_date = i[0].strftime("%Y-%m-%d")
-    # day_energy=round(day_energy_total,2)
-    # print(day_date, day_energy)
-
-# for j in cursor2.fetchall():
-#     print(j)
-# print(all_counters_info)
+# def get_counters_consumption():
+#     """ Gets energy consumption data from the database,
+#             looks for which the data belongs to which counter,
+#             makes a list of the summed up data. """
+#     counters = get_counters_info()
+#     request = (f"SELECT NUM_DEVICE, NUM_CH , DT_DAY,TARIF1, TARIF2, TARIF3 FROM IMPULS4 WHERE DT_DAY='{sql_date}'")
+#     cursor.execute(request)
+#     all_counters_consumption = []
+#     for consumption in cursor.fetchall():
+#         for counter in counters:
+#             one_counter_consumption = []
+#             if counter[3] == consumption[1]:
+#                 if counter[2] == consumption[0]:
+#                     one_counter_consumption.append(counter[1])
+#                     total_consumption = round(consumption[3]+consumption[4]+consumption[5], 2)
+#                     one_counter_consumption.append(total_consumption)
+#                     break
+#             all_counters_consumption.append(one_counter_consumption)
+#     return all_counters_consumption
