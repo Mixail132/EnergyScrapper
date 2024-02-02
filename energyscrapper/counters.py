@@ -5,9 +5,16 @@ from connections import cursor
 
 def get_counters_info():
     """ Gets counters' info (number of a counter, what it counts)
-            from the database, filters the extra data and makes a list
-            of the data. """
-    request = ("SELECT NAME, SERIALNUM, NUM_DEVICE, NUM_CH FROM CHANNEL")
+        from the database, filters the extra data and makes a list
+        of the data. """
+    request = ("""
+            SELECT 
+            NAME, 
+            SERIALNUM, 
+            NUM_DEVICE, 
+            NUM_CH 
+            FROM CHANNEL
+            """)
     cursor.execute(request)
     all_counters_info = []
     for i in cursor.fetchall():
