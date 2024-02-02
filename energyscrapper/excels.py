@@ -9,11 +9,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def put_consumptions_to_excel(counters_data):
+def put_consumptions_to_excel(data_day, counters_data):
     counters_storage_file = os.getenv('DBEXCEL_PATH')
     counters_data_storage =  load_workbook(counters_storage_file) 
-    today_date = datetime.datetime.now()
-    current_date_row = today_date.toordinal()-737328
+    # today_date = datetime.datetime.now()
+    current_date_row = data_day.toordinal()-737328
     counters_numbers={}
     for col_number in range(2, 47):
         counter_number = counters_data_storage.active.cell(row=3, column = col_number).value
