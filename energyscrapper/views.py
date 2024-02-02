@@ -2,6 +2,7 @@
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
 from counters import get_counters_info
+from excels import put_consumptions_to_excel
 
 
 def filter_retreived_energy():
@@ -19,6 +20,7 @@ def filter_retreived_energy():
                 one_counter_total_energy = (sum(consumption[3:6]))
                 filtered_consumption[counter[1]] = round(one_counter_total_energy, 2)
                 break
+    put_consumptions_to_excel(filtered_consumption)
     return filtered_consumption
 
 
