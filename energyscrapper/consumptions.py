@@ -1,8 +1,6 @@
 # The script gets the energy consumption info
 from datetime import datetime, timedelta
-from counters import get_counters_info
 from connections import cursor
-
 
 
 def get_counters_consumption(data_date):
@@ -21,7 +19,6 @@ def get_counters_consumption(data_date):
         """)
     cursor.execute(request)
     return cursor.fetchall()
-
 
 
 if __name__ == "__main__":
