@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 import os
 import datetime
 from dotenv import load_dotenv
-# from views import filter_retreived_energy
+# from views import retreived_energy_handler
 
 
 load_dotenv()
@@ -29,6 +29,6 @@ def put_consumptions_to_excel(counters_data):
 
 
 if __name__ == "__main__" :
-    counters_data = filter_retreived_energy()
+    counters_data = retreived_energy_handler()
     put_consumptions_to_excel(counters_data)
 

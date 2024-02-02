@@ -5,10 +5,11 @@ from counters import get_counters_info
 from excels import put_consumptions_to_excel
 
 
-def filter_retreived_energy():
+def retreived_energy_handler():
     """ Gets energy consumption data from the database
         looks for which the data belongs to which counter,
-        makes a list of the summed up data. """
+        makes a dict of the summed up data,
+        puts the data to excel file. """
     yesterday = datetime.today()-timedelta(days=16)
     sql_date  = yesterday.strftime("%Y-%m-%d")
     consumptions = get_counters_consumption(sql_date)
@@ -25,6 +26,4 @@ def filter_retreived_energy():
 
 
 if __name__=="__main__":
-    filtered_energy = filter_retreived_energy() 
-    for key, value in filtered_energy.items():
-        print(key, value)
+    filtered_energy = retreived_energy_handler() 
