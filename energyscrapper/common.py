@@ -74,7 +74,7 @@ from openpyxl import load_workbook
 # from views import retreived_energy_handler
 
 
-load_dotenv()
+# load_dotenv()
 
 
 def put_consumptions_to_excel(data_day, counters_data):
@@ -124,7 +124,7 @@ def period_energy_handler():
     """ Counts the period of needed data,
         pass every single data as a parameter
         to a single day retrieving energy function. """
-    for day in range(3, -1, -1): # Today to three days ago in descendштп order
+    for day in range(0, -1, -1): # Today to three days ago in descendштп order
         data_day = datetime.today()-timedelta(days=day)
         sql_date = data_day.strftime("%Y-%m-%d")
         day_energy_handler(sql_date, data_day)
