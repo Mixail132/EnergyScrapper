@@ -23,15 +23,8 @@ def day_energy_handler(sql_date, data_day):
     return filtered_consumption
 
 
-def period_energy_handler():
-    """ Counts the period of needed data,
-        pass every single data as a parameter
-        to a single day retrieving energy function. """
-    for day in range(3, -1, -1): # Today to three days ago in descendштп order
-        data_day = datetime.today()-timedelta(days=day)
-        sql_date = data_day.strftime("%Y-%m-%d")
-        day_energy_handler(sql_date, data_day)
-
-
 if __name__=="__main__":
-    period_energy_handler()
+    data_day = datetime.today()-timedelta(days=0)
+    sql_date = data_day.strftime("%Y-%m-%d")
+    day_energy_handler(sql_date, data_day)
+    
