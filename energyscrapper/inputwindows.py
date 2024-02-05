@@ -17,7 +17,6 @@ class UserInput:
         days = self.days_entry.get()
         if not days.isdigit():
             messagebox.showerror("Error", "Введите число, а не текст")
-            # self.window.destroy()
         else:
             self.window.destroy()
 
@@ -28,6 +27,9 @@ class UserInput:
         The text is number of days for getting data from the DB.
         """
         self.window = tk.Tk()
+        x = (self.window.winfo_screenwidth()-self.window.winfo_reqwidth()) / 2
+        y = (self.window.winfo_screenheight()-self.window.winfo_reqheight()) / 2
+        self.window.wm_geometry("+%d+%d" % (x,y))
         self.window.title("EnergyControlCenter")
         self.days_label = tk.Label(self.window, text="Введите количество дней для опроса данных ")
         self.days_label.pack()
@@ -43,5 +45,4 @@ class UserInput:
 
 if __name__=="__main__":
     win = UserInput()
-    print(win.make_user_input())
-    # print(win.get_days_from_user())
+    win.make_user_input()
