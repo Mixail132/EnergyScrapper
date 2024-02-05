@@ -1,4 +1,6 @@
 # Here is the main logic
+import asyncio
+import time
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
 from counters import get_counters_info
@@ -33,8 +35,13 @@ def period_energy_handler():
     for day in range(update_days, -1, -1):
         data_day = datetime.today()-timedelta(days=day)
         sql_date = data_day.strftime("%Y-%m-%d")
-        day_energy_handler(sql_date, data_day)
+        (day_energy_handler(sql_date, data_day))
+        # task = asyncio.create_task(day_energy_handler(sql_date, data_day))
+        # await task
 
 
 if __name__=="__main__":
-    period_energy_handler()
+    print(time.strftime("%X"))
+    # asyncio.run(period_energy_handler())
+    (period_energy_handler())
+    print(time.strftime("%X"))
