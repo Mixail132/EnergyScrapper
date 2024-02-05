@@ -11,11 +11,15 @@ class UserInput:
     def get_days_from_user(self):
         """ 
         Gets the text from user input window
-        and make it as an int.
+        checks it, closes the window after input.
         """        
         global days 
         days = self.days_entry.get()
-        self.window.destroy()
+        if not days.isdigit():
+            messagebox.showerror("Error", "Введите число, а не текст")
+            # self.window.destroy()
+        else:
+            self.window.destroy()
 
 
     def make_user_input(self):
@@ -29,7 +33,7 @@ class UserInput:
         self.days_label.pack()
         self.days_entry = tk.Entry(self.window)
         self.days_entry.pack()
-        self.days_entry.insert(0, 3)
+        self.days_entry.insert(0, 1)
         self.get_button = tk.Button(text="Опросить", command=self.get_days_from_user)
         self.get_button.pack()
         self.window.mainloop()
