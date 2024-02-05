@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
 from counters import get_counters_info
 from excels import put_consumptions_to_excel
+from inputwindows import UserInput
 
 
 def day_energy_handler(sql_date, data_day):
@@ -27,7 +28,9 @@ def period_energy_handler():
     """ Counts the period of needed data,
         pass every single data as a parameter
         to a single day retrieving energy function. """
-    for day in range(3, -1, -1): # Today to three days ago in descendштп order
+    user_input = UserInput()
+    update_days = user_input.make_user_input() - 1
+    for day in range(update_days, -1, -1):
         data_day = datetime.today()-timedelta(days=day)
         sql_date = data_day.strftime("%Y-%m-%d")
         day_energy_handler(sql_date, data_day)
