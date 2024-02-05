@@ -27,11 +27,16 @@ def day_energy_handler(sql_date, data_day):
 
 
 def period_energy_handler():
-    """ Counts the period of needed data,
-        pass every single data as a parameter
-        to a single day retrieving energy function. """
+    """ 
+    Counts the period of needed data,
+    pass every single data as a parameter
+    to a single day retrieving energy function. 
+    """
     user_input = UserInput()
-    update_days = user_input.make_user_input() - 1
+    try:
+        update_days = user_input.make_user_input() - 1
+    except TypeError:
+        return
     for day in range(update_days, -1, -1):
         data_day = datetime.today()-timedelta(days=day)
         sql_date = data_day.strftime("%Y-%m-%d")

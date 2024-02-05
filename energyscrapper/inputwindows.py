@@ -10,10 +10,11 @@ class UserInput:
 
     def get_days_from_user(self):
         """ 
-        Gets the text from user input window
-        checks it, closes the window after input.
+        Gets the text from user input window, checks it, 
+        sets it as a global to get it from the lower below
+        function, closes the window after the input.
         """        
-        global days 
+        global days
         days = self.days_entry.get()
         if not days.isdigit():
             messagebox.showerror("Error", "Введите число, а не текст")
@@ -25,6 +26,7 @@ class UserInput:
         """ 
         Creates a user input window and takes text from a user.
         The text is number of days for getting data from the DB.
+        Returns that number or None if the user closed the window. 
         """
         self.window = tk.Tk()
         x = (self.window.winfo_screenwidth()-self.window.winfo_reqwidth()) / 2
@@ -39,7 +41,10 @@ class UserInput:
         self.get_button = tk.Button(text="Опросить", command=self.get_days_from_user)
         self.get_button.pack()
         self.window.mainloop()
-        return int(days)
+        try:
+            return int(days) 
+        except NameError:    
+            return None
      
 
 
