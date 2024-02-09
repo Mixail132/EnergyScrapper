@@ -21,4 +21,9 @@ Firebird 2.1.3\
 Poetry 1.7.1\
 Python 3.8.10\
 Fdb    2.18.3
+Tkinter 0.1.0
+
+## Launching
+For launching the database scrapping simply run 'dayviews.py' for todays retreiving\
+or 'periodviews.py' for period retreiving.
 
