@@ -1,9 +1,7 @@
 # Data storage in excel handler
 from openpyxl import load_workbook
 import os
-import datetime
 from dotenv import load_dotenv
-# from views import retreived_energy_handler
 
 
 load_dotenv()
@@ -27,8 +25,4 @@ def put_consumptions_to_excel(data_day, counters_data):
         counters_data_storage.active.cell(row=current_date_row, column=column_number).value=energy_value       
     counters_data_storage.save(counters_storage_file)
 
-
-if __name__ == "__main__" :
-    counters_data = retreived_energy_handler()
-    put_consumptions_to_excel(counters_data)
 
