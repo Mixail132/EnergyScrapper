@@ -2,7 +2,10 @@
 from openpyxl import load_workbook
 import os
 from dotenv import load_dotenv
+<<<<<<< HEAD
 from periodviews import period_energy_handler
+=======
+>>>>>>> c2549eed45b38fff60e074fe0f2421f24525bed1
 
 
 load_dotenv()
@@ -26,7 +29,10 @@ def put_consumptions_to_excel(data_day, counters_data):
     counters_data_storage.save(counters_storage_file)
 
 
+<<<<<<< HEAD
 if __name__ == "__main__" :
     counters_data = period_energy_handler()
     put_consumptions_to_excel(counters_data)
 
+=======
+>>>>>>> c2549eed45b38fff60e074fe0f2421f24525bed1

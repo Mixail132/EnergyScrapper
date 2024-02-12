@@ -1,5 +1,4 @@
 # Here is the main logic
-import asyncio
 import time
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
@@ -8,11 +7,16 @@ from excels import put_consumptions_to_excel
 from inputwindows import UserInput
 
 
-def day_energy_handler(sql_date, data_day):
-    """ Gets energy consumption data from the database
-        looks for which the data belongs to which counter,
-        makes a dict of the summed up data,
-        puts the data to excel file. """
+def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
+    """
+    Gets energy consumption data from the database,
+    looks for which the data belongs to which counter,
+    makes a dict of the summed up data,
+    puts the data to excel file.
+
+    :param sql_date: date on which you need to receive the data (str)
+    :param data_day: date on which you need to receive the data (datetime)
+    """
     consumptions = get_counters_consumption(sql_date)
     counters = get_counters_info()
     filtered_consumption={} 
@@ -26,7 +30,7 @@ def day_energy_handler(sql_date, data_day):
     return filtered_consumption
 
 
-def period_energy_handler():
+def period_energy_handler() -> None:
     """ 
     Counts the period of needed data,
     pass every single data as a parameter
@@ -40,13 +44,10 @@ def period_energy_handler():
     for day in range(update_days, -1, -1):
         data_day = datetime.today()-timedelta(days=day)
         sql_date = data_day.strftime("%Y-%m-%d")
-        (day_energy_handler(sql_date, data_day))
-        # task = asyncio.create_task(day_energy_handler(sql_date, data_day))
-        # await task
+        day_energy_handler(sql_date, data_day)
 
 
 if __name__=="__main__":
     print(time.strftime("%X"))
-    # asyncio.run(period_energy_handler())
-    (period_energy_handler())
+    period_energy_handler()
     print(time.strftime("%X"))
