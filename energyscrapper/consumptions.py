@@ -4,7 +4,7 @@ from connections import cursor
 
 
 def get_counters_consumption(data_date):
-    """ Gets all the energy consumption data from the database. """
+    """ Gets all the energy consumption data from the database """
     request = (f"""
         SELECT 
         NUM_DEVICE,
