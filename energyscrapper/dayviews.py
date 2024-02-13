@@ -5,11 +5,16 @@ from counters import get_counters_info
 from excels import put_consumptions_to_excel
 
 
-def day_energy_handler(sql_date, data_day):
-    """ Gets energy consumption data from the database
-        looks for which the data belongs to which counter,
-        makes a dict of the summed up data,
-        puts the data to excel file. """
+def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
+    """
+    Gets energy consumption data from the database,
+    looks for which the data belongs to which counter,
+    makes a dict of the summed up data,
+    puts the data to excel file.
+
+    :param sql_date: date on which you need to receive the data (str)
+    :param data_day: date on which you need to receive the data (datetime)
+    """
     consumptions = get_counters_consumption(sql_date)
     counters = get_counters_info()
     filtered_consumption={} 
