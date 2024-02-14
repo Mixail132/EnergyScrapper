@@ -20,7 +20,7 @@ You even don't  need 'Energy Control Center' to be installed on your computer.
 Firebird 2.1.3\
 Poetry 1.7.1\
 Python 3.8.10\
-Fdb    2.18.3
+Fdb    2.18.3\
 Tkinter 0.1.0
 
 ## Launching
