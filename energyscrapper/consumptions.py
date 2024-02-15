@@ -9,6 +9,7 @@ def get_counters_consumption(data_date: str) -> cursor:
 
     :param data_date: the date  from what one's gonna getting the data
     """
+    today_date = datetime.today().strftime("%Y-%m-%d")
     request = (f"""
         SELECT 
         NUM_DEVICE,
@@ -19,15 +20,18 @@ def get_counters_consumption(data_date: str) -> cursor:
         TARIF3 
         FROM IMPULS4 
         WHERE 
-        DT_DAY='{data_date}'
+        DT_DAY>='{data_date}'
+        AND
+        DT_DAY<='{today_date}'
+        ORDER BY DT_DAY 
         """)
     cursor.execute(request)
     return cursor.fetchall()
 
 
 if __name__ == "__main__":
-    yesterday = datetime.today()-timedelta(days=16)
-    sql_date = yesterday.strftime("%Y-%m-%d") 
+    example_date = datetime.today()-timedelta(days=3)
+    sql_date = example_date.strftime("%Y-%m-%d")
     all_consumptions = get_counters_consumption(sql_date)
     for num, char in enumerate(all_consumptions, 1):
         print(num, char)
