@@ -3,8 +3,12 @@ from datetime import datetime, timedelta
 from connections import cursor
 
 
-def get_counters_consumption(data_date):
-    """ Gets all the energy consumption data from the database """
+def get_counters_consumption(data_date: str) -> cursor:
+    """
+    Gets all the energy consumption data from the database.
+
+    :param data_date: the date  from what one's gonna getting the data
+    """
     request = (f"""
         SELECT 
         NUM_DEVICE,
