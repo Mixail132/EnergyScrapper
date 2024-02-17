@@ -86,5 +86,6 @@ if __name__ == "__main__":
     counters_info = get_counters_info()
     filtered = filter_counters_consumption(counters_info, all_consumptions)
     all_consumptions = make_consumptions_per_date(sql_date, filtered)
-    for date, data in all_consumptions.items():
-        print(date, data)
+    for consumption_date, consumption_data in all_consumptions.items():
+        print(consumption_date, consumption_data)
+        
