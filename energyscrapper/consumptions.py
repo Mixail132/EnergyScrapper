@@ -31,14 +31,34 @@ def get_counters_consumption(data_date: str) -> cursor:
 
 
 def filter_counters_consumption(counters, consumptions):
-    one_day_filtered_consumption = {}
-    for counter in counters:
-        for consumption in consumptions:
+    all_days_filtered_consumption = []
+    for consumption in consumptions:
+        one_day_filtered_consumption = []
+        for counter in counters:
             if counter[3] == consumption[1] and counter[2] == consumption[0]:
+                one_day_filtered_consumption.append(consumption[2])
+                one_day_filtered_consumption.append(counter[1])
                 one_counter_total_energy = (sum(consumption[3:6]))
-                one_day_filtered_consumption[counter[1]] = round(one_counter_total_energy, 2)
+                one_day_filtered_consumption.append(round(one_counter_total_energy, 2))
                 break
-    return one_day_filtered_consumption
+        if one_day_filtered_consumption:
+            all_days_filtered_consumption.append(one_day_filtered_consumption)
+    return all_days_filtered_consumption
+
+
+def make_consumptions_per_date(period_date, consumptions):
+    date = datetime.strptime(period_date, "%Y-%m-%d")
+    days = (datetime.today() - date).days
+    all_days = {}
+    for day in reversed(range(days)):
+        get_day = date.today() - timedelta(days=day)
+        one_day_consumption = {}
+        for consumption in consumptions:
+            # print((consumption[0].date()),(get_day))
+            if consumption[0].date() == get_day.date():
+                one_day_consumption[consumption[1]] = consumption[2]
+        all_days[f'{get_day.date()}'] = one_day_consumption
+    return all_days
 
 
 if __name__ == "__main__":
@@ -47,9 +67,8 @@ if __name__ == "__main__":
     all_consumptions = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
     filtered = filter_counters_consumption(counters_info, all_consumptions)
-    for i, key in enumerate(filtered.items()):
-        print(i, key)
-    # for num, char in enumerate(all_consumptions, 1):
-    #     print(num, char)
+    all_consumptions = make_consumptions_per_date(sql_date, filtered)
+    for i, j in all_consumptions.items():
+        print(i, j)
 
 
