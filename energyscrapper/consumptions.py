@@ -43,7 +43,7 @@ def filter_counters_consumption(counters: list, consumptions: list) -> list:
     Decimal('2'), Decimal('56')  - the counter's parameters
 
     :param consumptions: list of all the consumptions like this:
-    (Decimal('1'), Decimal('16'), datetime.datetime(2024, 2, 16, 0, 0), 289.724243164063, 149.96900197342, 61.8137512207031)
+    (Decimal('1'), Decimal('16'), datetime.datetime(2024, 2, 16, 0, 0), 289.72424316, 149.96900197, 61.81375122)
     where:
     Decimal('1'), Decimal('16'),          -  the counters parameters;
     datetime.datetime(2024, 2, 16, 0, 0), -  the energy consumption date;
@@ -84,7 +84,5 @@ if __name__ == "__main__":
     all_consumptions = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
     filtered = filter_counters_consumption(counters_info, all_consumptions)
-    for i in counters_info:
-        print(i)
     all_consumptions = make_consumptions_per_date(sql_date, filtered)
 
