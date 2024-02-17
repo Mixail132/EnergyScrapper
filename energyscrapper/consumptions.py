@@ -31,6 +31,24 @@ def get_counters_consumption(data_date: str) -> cursor:
 
 
 def filter_counters_consumption(counters: list, consumptions: list) -> list:
+    """
+    Gets the counters info and excludes reactive and given energy from
+    all the consumptions. Also match the consumption to the related counter
+
+    :param counters: list of all counters info like this:
+    ['Освещение ЩО-8   А+', '19094838', Decimal('2'), Decimal('56')]
+    where
+    'Освещение ЩО-8   А+'        - consumer and energy type
+    '19094838'                   - the counter number
+    Decimal('2'), Decimal('56')  - the counter's parameters
+
+    :param consumptions: list of all the consumptions like this:
+    (Decimal('1'), Decimal('16'), datetime.datetime(2024, 2, 16, 0, 0), 289.724243164063, 149.96900197342, 61.8137512207031)
+    where:
+    Decimal('1'), Decimal('16'),          -  the counters parameters;
+    datetime.datetime(2024, 2, 16, 0, 0), -  the energy consumption date;
+    289.724243164063, 149.96900197342, 61.8137512207031 - the energy values for different rates.
+    """
     all_days_filtered_consumption = []
     for consumption in consumptions:
         one_day_filtered_consumption = []
@@ -66,5 +84,7 @@ if __name__ == "__main__":
     all_consumptions = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
     filtered = filter_counters_consumption(counters_info, all_consumptions)
+    for i in counters_info:
+        print(i)
     all_consumptions = make_consumptions_per_date(sql_date, filtered)
 
