@@ -74,7 +74,8 @@ def make_consumptions_per_date(period_date: str, consumptions: list) -> dict:
         for consumption in consumptions:
             if consumption[0].date() == get_day.date():
                 one_day_consumption[consumption[1]] = consumption[2]
-        all_days[f'{get_day.date()}'] = one_day_consumption
+        if one_day_consumption:
+            all_days[f'{get_day.date()}'] = one_day_consumption
     return all_days
 
 
@@ -85,3 +86,5 @@ if __name__ == "__main__":
     counters_info = get_counters_info()
     filtered = filter_counters_consumption(counters_info, all_consumptions)
     all_consumptions = make_consumptions_per_date(sql_date, filtered)
+    for date, data in all_consumptions.items():
+        print(date, data)
