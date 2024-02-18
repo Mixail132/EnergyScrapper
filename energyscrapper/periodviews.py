@@ -3,11 +3,10 @@ import time
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
 from counters import get_counters_info
-from excels import put_consumptions_to_excel
 from inputwindows import UserInput
 
 
-def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
+def day_energy_handler(sql_date: str) -> dict:
     """
     Gets energy consumption data from the database,
     looks for which the data belongs to which counter,
@@ -15,11 +14,9 @@ def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
     puts the data to excel file.
 
     :param sql_date: date on which you need to receive the data (str)
-    :param data_day: date on which you need to receive the data (datetime)
     """
     consumptions = get_counters_consumption(sql_date)
     counters = get_counters_info()
-    all_filtered_consumption = {}
     one_filtered_consumption = {}
     for counter in counters:
         for consumption in consumptions:
@@ -27,7 +24,6 @@ def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
                 one_counter_total_energy = (sum(consumption[3:6]))
                 one_filtered_consumption[counter[1]] = round(one_counter_total_energy, 2)
                 break
-    # put_consumptions_to_excel(data_day, filtered_consumption)
     return one_filtered_consumption
 
 
@@ -42,10 +38,9 @@ def period_energy_handler() -> None:
         update_days = user_input.make_user_input() - 1
     except TypeError:
         return
-    # for day in range(update_days, -1, -1):
-    data_day = datetime.today()-timedelta(days=update_days )
+    data_day = datetime.today()-timedelta(days=update_days)
     sql_date = data_day.strftime("%Y-%m-%d")
-    day_energy_handler(sql_date, data_day)
+    day_energy_handler(sql_date)
 
 
 if __name__ == "__main__":
