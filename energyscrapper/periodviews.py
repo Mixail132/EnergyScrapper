@@ -2,8 +2,9 @@
 import time
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
+from consumptions import filter_counters_consumption
+from consumptions import make_consumptions_per_date
 from counters import get_counters_info
-from excels import put_consumptions_to_excel
 from inputwindows import UserInput
 
 
@@ -19,7 +20,6 @@ def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
     """
     consumptions = get_counters_consumption(sql_date)
     counters = get_counters_info()
-    all_filtered_consumption = {}
     one_filtered_consumption = {}
     for counter in counters:
         for consumption in consumptions:
@@ -27,11 +27,10 @@ def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
                 one_counter_total_energy = (sum(consumption[3:6]))
                 one_filtered_consumption[counter[1]] = round(one_counter_total_energy, 2)
                 break
-    # put_consumptions_to_excel(data_day, filtered_consumption)
     return one_filtered_consumption
 
 
-def period_energy_handler() -> None:
+def period_energy_handler() -> dict:
     """ 
     Counts the period of needed data,
     pass every single data as a parameter
@@ -39,13 +38,17 @@ def period_energy_handler() -> None:
     """
     user_input = UserInput()
     try:
-        update_days = user_input.make_user_input() - 1
+        update_days: int = user_input.make_user_input() - 1
     except TypeError:
-        return
-    # for day in range(update_days, -1, -1):
+        pass  # Paste a message box here later
+    global update_days
     data_day = datetime.today()-timedelta(days=update_days )
     sql_date = data_day.strftime("%Y-%m-%d")
-    day_energy_handler(sql_date, data_day)
+    all_consumption = get_counters_consumption(sql_date)
+    counters_info = get_counters_info()
+    filtered = filter_counters_consumption(counters_info, all_consumption)
+    needed_consumption = make_consumptions_per_date(sql_date, filtered)
+    return needed_consumption
 
 
 if __name__ == "__main__":
