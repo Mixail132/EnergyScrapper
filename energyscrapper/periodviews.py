@@ -8,7 +8,7 @@ from counters import get_counters_info
 from inputwindows import UserInput
 
 
-def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
+def day_energy_handler(sql_date: str) -> dict:
     """
     Gets energy consumption data from the database,
     looks for which the data belongs to which counter,
@@ -16,7 +16,6 @@ def day_energy_handler(sql_date: str, data_day: datetime) -> dict:
     puts the data to excel file.
 
     :param sql_date: date on which you need to receive the data (str)
-    :param data_day: date on which you need to receive the data (datetime)
     """
     consumptions = get_counters_consumption(sql_date)
     counters = get_counters_info()
