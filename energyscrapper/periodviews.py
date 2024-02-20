@@ -13,7 +13,7 @@ def day_energy_handler(sql_date: str) -> dict:
     Gets energy consumption data from the database,
     looks for which the data belongs to which counter,
     makes a dict of the summed up data,
-    puts the data to excel file.
+    puts the data to Excel file.
 
     :param sql_date: date on which you need to receive the data (str)
     """
@@ -36,12 +36,12 @@ def period_energy_handler() -> dict:
     to a single day retrieving energy function. 
     """
     user_input = UserInput()
+    update_days = 0
     try:
         update_days: int = user_input.make_user_input() - 1
     except TypeError:
         pass  # Paste a message box here later
-    global update_days
-    data_day = datetime.today()-timedelta(days=update_days )
+    data_day = datetime.today()-timedelta(days=update_days)
     sql_date = data_day.strftime("%Y-%m-%d")
     all_consumption = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
