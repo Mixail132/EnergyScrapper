@@ -20,7 +20,7 @@ def get_counters_info():
     for i in cursor.fetchall():
         counters_info = []
         for j in i:
-            counters_info.append((j))
+            counters_info.append(j)
         reg = r"R\-|R\+|A\-|А\-"
         if not re.findall(reg, str(counters_info[0])):
             all_counters_info.append(counters_info)
