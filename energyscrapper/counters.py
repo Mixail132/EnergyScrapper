@@ -4,9 +4,10 @@ from connections import cursor
 
 
 def get_counters_info():
-    """ Gets counters' info (number of a counter, what it counts)
-        from the database, filters the extra data and makes a list
-        of the data. """
+    """
+    Gets all the counters' info (number of a counter, what it counts)
+    from the database makes a list of the data
+    """
     request = ("""
             SELECT 
             NAME, 
