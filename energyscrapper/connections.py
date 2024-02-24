@@ -1,12 +1,9 @@
 import os
 import fdb
-from dotenv import load_dotenv
+import dirs
 
-
-load_dotenv()
-DATABASE = os.getenv("DATABASE_PATH")
-DB_CLIENT = os.getenv("DBCLIENT_PATH")
-
+DATABASE = dirs.DATABASE
+DB_CLIENT = dirs.DB_CLIENT
 
 connect = fdb.connect(
     host='localhost',
