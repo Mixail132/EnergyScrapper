@@ -5,6 +5,7 @@ from consumptions import get_counters_consumption
 from consumptions import filter_counters_consumption
 from consumptions import make_consumptions_per_date
 from counters import get_counters_info
+from excels import put_consumptions_to_excel
 from inputwindows import UserInput
 
 
@@ -45,8 +46,9 @@ def period_energy_handler() -> dict:
     sql_date = data_day.strftime("%Y-%m-%d")
     all_consumption = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
-    filtered = filter_counters_consumption(counters_info, all_consumption)
-    needed_consumption = make_consumptions_per_date(sql_date, filtered)
+    filtered_consumption = filter_counters_consumption(counters_info, all_consumption)
+    needed_consumption = make_consumptions_per_date(sql_date, filtered_consumption)
+    put_consumptions_to_excel(sql_date, needed_consumption)
     return needed_consumption
 
 
