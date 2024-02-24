@@ -2,13 +2,14 @@
 from openpyxl import load_workbook
 import os
 from dotenv import load_dotenv
+import dirs
 
 
 load_dotenv()
 
 
 def put_consumptions_to_excel(data_day, counters_data):
-    counters_storage_file = os.getenv('DBEXCEL_PATH')
+    counters_storage_file = dirs.DB_EXCEL
     counters_data_storage = load_workbook(counters_storage_file)
     current_date_row = data_day.toordinal()-737328
     counters_numbers = {}
