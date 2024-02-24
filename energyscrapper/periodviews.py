@@ -48,7 +48,7 @@ def period_energy_handler() -> dict:
     counters_info = get_counters_info()
     filtered_consumption = filter_counters_consumption(counters_info, all_consumption)
     needed_consumption = make_consumptions_per_date(sql_date, filtered_consumption)
-    put_consumptions_to_excel(sql_date, needed_consumption)
+    put_consumptions_to_excel(needed_consumption)
     return needed_consumption
 
 
