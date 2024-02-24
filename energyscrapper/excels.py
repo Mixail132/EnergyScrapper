@@ -8,7 +8,7 @@ import dirs
 load_dotenv()
 
 
-def put_consumptions_to_excel(counters_data):
+def put_consumptions_to_excel(counters_data: dict) -> None:
     counters_storage_file = dirs.DB_EXCEL
     counters_data_storage = load_workbook(counters_storage_file)
     for date, counters_values in counters_data.items():
