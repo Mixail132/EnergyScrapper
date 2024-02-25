@@ -6,7 +6,6 @@ from consumptions import filter_counters_consumption
 from consumptions import make_consumptions_per_date
 from counters import get_counters_info
 from excels import put_consumptions_to_excel
-from inputwindows import UserInput
 
 
 def day_energy_handler(sql_date: str) -> dict:
@@ -36,13 +35,7 @@ def period_energy_handler() -> dict:
     pass every single data as a parameter
     to a single day retrieving energy function. 
     """
-    user_input = UserInput()
-    update_days = 0
-    try:
-        update_days: int = user_input.make_user_input() - 1
-    except TypeError:
-        pass  # Paste a message box here later
-    data_day = datetime.today()-timedelta(days=update_days)
+    data_day = datetime.today()-timedelta(days=31)
     sql_date = data_day.strftime("%Y-%m-%d")
     all_consumption = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
