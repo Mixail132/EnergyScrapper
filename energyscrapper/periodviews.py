@@ -7,27 +7,6 @@ from counters import get_counters_info
 from excels import put_consumptions_to_excel
 
 
-def day_energy_handler(sql_date: str) -> dict:
-    """
-    Gets energy consumption data from the database,
-    looks for which the data belongs to which counter,
-    makes a dict of the summed up data,
-    puts the data to Excel file.
-
-    :param sql_date: date on which you need to receive the data (str)
-    """
-    consumptions = get_counters_consumption(sql_date)
-    counters = get_counters_info()
-    one_filtered_consumption = {}
-    for counter in counters:
-        for consumption in consumptions:
-            if counter[3] == consumption[1] and counter[2] == consumption[0]:
-                one_counter_total_energy = (sum(consumption[3:6]))
-                one_filtered_consumption[counter[1]] = round(one_counter_total_energy, 2)
-                break
-    return one_filtered_consumption
-
-
 def period_energy_handler() -> dict:
     """ 
     Counts the period of needed data,
