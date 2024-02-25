@@ -8,10 +8,12 @@ from excels import put_consumptions_to_excel
 
 
 def period_energy_handler() -> dict:
-    """ 
-    Counts the period of needed data,
-    pass every single data as a parameter
-    to a single day retrieving energy function. 
+    """
+    Gets all the counters' consumption for 31 days.
+    Gets all the counters' info, such as counter number, what in counts etc.
+    Excludes the reactive energy data and the output energy data.
+    Creates a dict where the key is a date and the value is a consumption per the date.
+    Writes the given data to Excel file.
     """
     data_day = datetime.today()-timedelta(days=31)
     sql_date = data_day.strftime("%Y-%m-%d")
