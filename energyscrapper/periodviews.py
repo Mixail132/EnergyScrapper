@@ -1,5 +1,4 @@
 # Here is the main logic
-import time
 from datetime import datetime, timedelta
 from consumptions import get_counters_consumption
 from consumptions import filter_counters_consumption
@@ -46,6 +45,4 @@ def period_energy_handler() -> dict:
 
 
 if __name__ == "__main__":
-    print(time.strftime("%X"))
     period_energy_handler()
-    print(time.strftime("%X"))
