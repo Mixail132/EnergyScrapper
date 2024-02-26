@@ -1,10 +1,12 @@
 # This file contains all the logic connected together for making an exe file later
 
 # ------------------------------------- .env --------------------------------------------
-DATABASE_PATH = "C://Program Files (x86)/Control Center Server/Base/ENERGY.GDB"
-DBCLIENT_PATH = "C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll"
-DBEXCEL_PATH = "C://Users/Ev/Documents/Python/EnergyScrapper/data/energy.xlsx"
-
+# DATABASE_PATH = "C://Program Files (x86)/Control Center Server/Base/ENERGY.GDB"
+# DBCLIENT_PATH = "C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll"
+# DBEXCEL_PATH = "C://Users/Ev/Documents/Python/EnergyScrapper/data/energy.xlsx"
+DATABASE_PATH = "C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB"
+DBCLIENT_PATH = "C:\Program Files (x86)/Firebird\Firebird_2_1/bin/fbclient.dll"
+DBEXCEL_PATH = "C:\Users\User\Documents\Информация\Расчеты\Энергопотребление\Показания\Разное\energy.xlsx"
 # ------------------------------------ dirs.py ------------------------------------------
 from pathlib import Path
 
