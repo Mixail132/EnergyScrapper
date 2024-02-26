@@ -136,8 +136,8 @@ def put_consumptions_to_excel(counters_data: dict) -> None:
 # Here is the main logic
 from datetime import datetime, timedelta
 
-# start_day = datetime.today()
-start_day = datetime(2024, 2, 13)
+start_day = datetime.today()
+# start_day = datetime(2024, 2, 13)
 
 
 def period_energy_handler() -> dict:

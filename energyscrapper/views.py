@@ -6,8 +6,8 @@ from consumptions import make_consumptions_per_date
 from counters import get_counters_info
 from excels import put_consumptions_to_excel
 
-# start_day = datetime.today()
-start_day = datetime(2024, 2, 13)
+start_day = datetime.today()
+# start_day = datetime(2024, 2, 13)
 
 
 def period_energy_handler() -> dict:
