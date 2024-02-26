@@ -4,9 +4,9 @@
 # DATABASE_PATH = "C://Program Files (x86)/Control Center Server/Base/ENERGY.GDB"
 # DBCLIENT_PATH = "C://Program Files (x86)/Firebird/Firebird_2_1/bin/fbclient.dll"
 # DBEXCEL_PATH = "C://Users/Ev/Documents/Python/EnergyScrapper/data/energy.xlsx"
-DATABASE_PATH = "C:\Program Files (x86)\Control Center Server\Base\ENERGY.GDB"
-DBCLIENT_PATH = "C:\Program Files (x86)/Firebird\Firebird_2_1/bin/fbclient.dll"
-DBEXCEL_PATH = "C:\Users\User\Documents\Информация\Расчеты\Энергопотребление\Показания\Разное\energy.xlsx"
+DATABASE_PATH = 'C:\\Program Files (x86)\\Control Center Server\\Base\\ENERGY.GDB'
+DBCLIENT_PATH = 'C:\\Program Files (x86)\\Firebird\\Firebird_2_1\\bin\\fbclient.dll'
+DBEXCEL_PATH = 'C:\\Users\\User\\Documents\\Информация\\Расчеты\\Энергопотребление\\Показания\\Разное\\energy.xlsx'
 # ------------------------------------ dirs.py ------------------------------------------
 from pathlib import Path
 
@@ -141,7 +141,7 @@ start_day = datetime.today()
 
 
 def period_energy_handler() -> dict:
-    data_day = start_day-timedelta(days=31)
+    data_day = start_day-timedelta(days=33)
     sql_date = data_day.strftime("%Y-%m-%d")
     all_consumption = get_counters_consumption(sql_date)
     counters_info = get_counters_info()
