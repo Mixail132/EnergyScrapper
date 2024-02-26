@@ -30,7 +30,6 @@ connect = fdb.connect(
 cursor = connect.cursor()
 
 # ------------------------------- consumptions.py -----------------------------------------
-# The script gets the energy consumption info
 def get_counters_consumption(data_date: str) -> cursor:
     today_date = datetime.today().strftime("%Y-%m-%d")
     request = (f"""
@@ -83,7 +82,6 @@ def make_consumptions_per_date(period_date: str, consumptions: list) -> dict:
     return all_days
 
 # -------------------------- counters.py ------------------------------------
-# The script gets energy counters info
 import re
 
 
@@ -108,7 +106,6 @@ def get_counters_info():
     return all_counters_info
 
 # ------------------------------ excels.py -------------------------------------
-# Data storage in excel handler
 from openpyxl import load_workbook
 
 
@@ -133,7 +130,6 @@ def put_consumptions_to_excel(counters_data: dict) -> None:
 
 
 # ------------------------------- views.py ----------------------------------
-# Here is the main logic
 from datetime import datetime, timedelta
 
 start_day = datetime.today()
