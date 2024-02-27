@@ -6,6 +6,9 @@ from consumptions import make_consumptions_per_date
 from counters import get_counters_info
 from excels import put_consumptions_to_excel
 
+start_day = datetime.today()
+# start_day = datetime(2024, 2, 13)
+
 
 def period_energy_handler() -> dict:
     """
@@ -15,7 +18,7 @@ def period_energy_handler() -> dict:
     Creates a dict where the key is a date and the value is a consumption per the date.
     Writes the given data to Excel file.
     """
-    data_day = datetime.today()-timedelta(days=31)
+    data_day = start_day-timedelta(days=31)
     sql_date = data_day.strftime("%Y-%m-%d")
     all_consumption = get_counters_consumption(sql_date)
     counters_info = get_counters_info()

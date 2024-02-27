@@ -22,9 +22,9 @@ Also you need '.env' file with paths to the database, dbclient file and receivin
 ## Components
 Firebird 2.1.3\
 Poetry 1.7.1\
-Python 3.8.10\
+Python 3.8.9\
 Fdb    2.18.3\
-Tkinter 0.1.0
+
 
 ## Launching
 For launching the database scrapping simply run 'views.py' for 31 days retrieving from today.
