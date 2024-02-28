@@ -9,6 +9,14 @@ load_dotenv()
 
 
 def put_consumptions_to_excel(counters_data: dict) -> None:
+    """
+    Gets the dict of the data.
+    Opens the Excel file and finds what counter defers to what cell.
+    Finds the current data row.
+    Inserts the appropriate data into the appropriate rows.
+    Saves the Excel file.
+    :param counters_data:
+    """
     counters_storage_file = dirs.DB_EXCEL
     counters_data_storage = load_workbook(counters_storage_file)
     for date, counters_values in counters_data.items():
