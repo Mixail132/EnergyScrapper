@@ -15,7 +15,13 @@ def put_consumptions_to_excel(counters_data: dict) -> None:
     Finds the current data row.
     Inserts the appropriate data into the appropriate rows.
     Saves the Excel file.
-    :param counters_data:
+    :param counters_data: looks like this:
+    2024-02-04 {'18085423': 14239.49, '19094836': 20873.95, ... '18086745': 9891.18}
+    2024-02-05 {'18085423': 14255.95, '19094836': 20892.65, ... '18086745': 9906.58}
+    where:
+        2024-02-04 - the meters' reading date;
+        18085423   - one of the counter factory number;
+        14239.49   - the meter's value for the date.
     """
     counters_storage_file = dirs.DB_EXCEL
     counters_data_storage = load_workbook(counters_storage_file)
