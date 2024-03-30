@@ -18,12 +18,14 @@ for process in psutil.process_iter():
     if name and name in "EXCELExcelexcel":
         break
 else:
-    subprocess.Popen(["start", main_excel_file], shell=True)
+    # subprocess.Popen(["start", main_excel_file], shell=True)
+    pass
 
-
-
-app = Application().connect(best_match="Excel")
-# app.window(best_match='excel').set_focus()
+app = Application(backend="uia").connect(path = r"C:\Program Files (x86)\Microsoft Office\Office16\EXCEL.exe")
+# app["Excel"].open(path = main_excel_file)
+# app["Excel"].set_focus()
+# app = Application().connect(path=main_excel_file)
+# app.window().set_focus()
 
 #
 # #Поиск и закрытие мешающих окон, когда опрос не запущен
