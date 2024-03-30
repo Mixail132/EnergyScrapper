@@ -1,23 +1,29 @@
 # Проверка на предмет открытия программ Excel и EnergyControlCenter
 import psutil
+import subprocess
 import ctypes
 import sys
 import os
 from pywinauto.application import Application
 import pyautogui as pg
+import openpyxl
 from dotenv import load_dotenv
 
 load_dotenv()
-main_excel_file = os.getenv("TGEXCEL_PATH")
+main_excel_file = os.getenv(r"TGEXCEL_PATH")
 
+names = []
 for process in psutil.process_iter():
     name = process.name()
-    excel = ["EXCEL.EXE", "Excel.exe", "excel.exe"]
-    if name not in excel:
-        os.startfile(main_excel_file)
+    if name and name in "EXCELExcelexcel":
+        break
+else:
+    subprocess.Popen(["start", main_excel_file], shell=True)
 
-app = Application().connect(best_match="excel")
-app.window(best_match='excel').set_focus()
+
+
+app = Application().connect(best_match="Excel")
+# app.window(best_match='excel').set_focus()
 
 #
 # #Поиск и закрытие мешающих окон, когда опрос не запущен
