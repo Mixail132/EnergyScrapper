@@ -8,6 +8,7 @@ from pywinauto.application import Application
 import pyautogui as pg
 import openpyxl
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 main_excel_file = os.getenv(r"TGEXCEL_PATH")
@@ -18,10 +19,19 @@ for process in psutil.process_iter():
     if name and name in "EXCELExcelexcel":
         break
 else:
-    # subprocess.Popen(["start", main_excel_file], shell=True)
-    pass
+    subprocess.Popen(["start", main_excel_file], shell=True)
+    time.sleep(5)
+    # pass
 
-app = Application(backend="uia").connect(path = r"C:\Program Files (x86)\Microsoft Office\Office16\EXCEL.exe")
+
+# app = Application().connect(path=r"C:\Program Files (x86)\Microsoft Office\Office16\EXCEL.exe")
+
+#{'app': <pywinauto.application.Application object at 0x01A858B0>, 'criteria': [{'best_match': 'Excel', 'backend': 'win32', 'app': <pywinauto.application.Application object at 0x01A858B0>}], 'actions': <pywinauto.actionlogger._StandardLogger object at 0x05DACF58>, 'backend': <pywinauto.backend.BackEnd object at 0x052B0868>, 'allow_magic_lookup': True, 'WrapperObject': <function deprecated.<locals>.wrap at 0x05E03FA0>, 'ChildWindow': <function deprecated.<locals>.wrap at 0x05E03BB0>, 'Exists': <function deprecated.<locals>.wrap at 0x05E03658>, 'Wait': <function deprecated.<locals>.wrap at 0x05D97460>, 'WaitNot': <function deprecated.<locals>.wrap at 0x05E0F028>, 'PrintControlIdentifiers': <function deprecated.<locals>.wrap at 0x05E0F070>, 'Window': <function deprecated.<locals>.wrap at 0x05E0F0B8>, 'Window_': <function deprecated.<locals>.wrap at 0x05E0F100>, 'window_': <function deprecated.<locals>.wrap at 0x05E0F148>}
+
+app = Application().connect(title_re="energy.xlsx")#, visible_only=True)
+
+# print(app[r"xcel"].wrapper_object())
+app['energy.xlsx - Excel (Сбой активации продукта)'].set_focus()
 # app["Excel"].open(path = main_excel_file)
 # app["Excel"].set_focus()
 # app = Application().connect(path=main_excel_file)
