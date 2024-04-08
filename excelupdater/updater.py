@@ -13,7 +13,7 @@ main_excel_title = os.getenv("TGEXCEL_NAME")
 
 
 def check_excel_running():
-    """ Scan the system processes and launch Excel if it's not running."""
+    """ Scans the system processes and launch Excel if it's not running."""
     for process in psutil.process_iter():
         name = process.name()
         if name and name in "EXCELExcelexcel":
@@ -37,6 +37,7 @@ if __name__ == "__main__":
     check_excel_running()
     time.sleep(5)
     set_excel_focus()
+    time.sleep(5)
     run_excel_macro("m")
     time.sleep(5)
     run_excel_macro("ь")
