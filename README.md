@@ -22,7 +22,7 @@ The Firebird service called FirebirdServerDefaultInstance should be running on y
 You can run 'fbserver.exe' if the service that mentioned above is running.\
 You don't need 'Energy Control Center' software running on your computer.\
 You even don't  need 'Energy Control Center' to be installed on your computer.\
-All you need is the database with the latest data for today.\
+All you need is the database with the latest data.\
 Also you need '.env' file with paths to the database, dbclient file and receiving the data Excel file.
 
 ## Modules 
