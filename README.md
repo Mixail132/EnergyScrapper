@@ -1,8 +1,8 @@
 ## Main
 There are three parts in the project.
-The first, called enargyscraper - gets the electrical energy counters data.\
-The second, called heatscrapper - gets the heat energy counters data.\
-The third, vald excelupdater - updates an Excel file , where all the data are shown together.\ 
+The first, called 'enargyscraper' - gets the electrical energy counters data.\
+The second, called 'heatscrapper' - gets the heat energy counters data.\
+The third, called 'excelupdater' - updates an Excel file , where all the data are shown together.
 
 ## Energy scraper
 Gets an electrical energy consumption data from the third party application Firebird database.\
@@ -33,4 +33,4 @@ Fdb    2.18.3
 
 ## Launching
 For launching the database scraping simply run 'views.py'.\
-For launching the updater simply run 'updater,py'.
+For launching the updater simply run 'updater.py'.
